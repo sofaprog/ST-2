@@ -1,11 +1,10 @@
-# Библиотека для второй лабы
+# Только библиотека circle (удалила ST-2)
 add_library(circle STATIC circle.cpp tasks.cpp)
 target_include_directories(circle PUBLIC ../include)
 
-# Информационная программа
 add_executable(${PROJECT_NAME}.info main.cpp)
 target_include_directories(${PROJECT_NAME}.info PUBLIC ../include)
-target_link_libraries(${PROJECT_NAME}.info circle)  # Только circle
+target_link_libraries(${PROJECT_NAME}.info circle)
 
 install(TARGETS circle
         LIBRARY DESTINATION lib
