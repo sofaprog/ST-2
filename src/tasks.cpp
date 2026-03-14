@@ -6,10 +6,10 @@ double calculateRopeGap() {
     const double EARTH_RADIUS = 6378100.0;
     Circle planet(EARTH_RADIUS);
 
-    double initialLength = planet.getCircumference();
+    double initialLength = planet.getFerence();
     double extendedLength = initialLength + 1.0;
 
-    planet.changeCircumference(extendedLength);
+    planet.setFerence(extendedLength);
 
     double newRadius = planet.getRadius();
     double gap = newRadius - EARTH_RADIUS;
@@ -29,8 +29,7 @@ double computePoolExpenses() {
     double pathArea = outer.getArea() - pool.getArea();
     double concreteExpense = pathArea * CONCRETE_PRICE;
 
-
-    double fenceLength = outer.getCircumference();
+    double fenceLength = outer.getFerence();  // было getCircumference
     double fenceExpense = fenceLength * FENCE_PRICE;
 
     double totalExpense = concreteExpense + fenceExpense;
