@@ -4,39 +4,39 @@
 #include "circle.h"
 
 Circle::Circle(double r) {
-    changeRadius(r);
+    setRadius(r);
 }
 
-bool Circle::isValidValue(double val) const {
+bool Circle::isValid(double val) const {
     if (std::isnan(val) || std::isinf(val)) return false;
-    if (val <= TOLERANCE) return false;
+    if (val <= EPS) return false;
     if (val > 1e300) return false;
     return true;
 }
 
-void Circle::changeRadius(double r) {
-    if (!isValidValue(r)) {
+void Circle::setRadius(double r) {
+    if (!isValid(r)) {
         throw std::invalid_argument("Invalid radius value");
     }
     radius_ = r;
-    circumference_ = 2.0 * PI_VALUE * radius_;
-    area_ = PI_VALUE * radius_ * radius_;
+    ference_ = 2.0 * PI * radius_;
+    area_ = PI * radius_ * radius_;
 }
 
-void Circle::changeCircumference(double c) {
-    if (!isValidValue(c)) {
+void Circle::setFerence(double c) {
+    if (!isValid(c)) {
         throw std::invalid_argument("Invalid circumference value");
     }
-    circumference_ = c;
-    radius_ = circumference_ / (2.0 * PI_VALUE);
-    area_ = PI_VALUE * radius_ * radius_;
+    ference_ = c;
+    radius_ = ference_ / (2.0 * PI);
+    area_ = PI * radius_ * radius_;
 }
 
-void Circle::changeArea(double a) {
-    if (!isValidValue(a)) {
+void Circle::setArea(double a) {
+    if (!isValid(a)) {
         throw std::invalid_argument("Invalid area value");
     }
     area_ = a;
-    radius_ = std::sqrt(area_ / PI_VALUE);
-    circumference_ = 2.0 * PI_VALUE * radius_;
+    radius_ = std::sqrt(area_ / PI);
+    ference_ = 2.0 * PI * radius_;
 }
