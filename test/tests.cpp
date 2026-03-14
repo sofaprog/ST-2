@@ -93,26 +93,28 @@ TEST(MathematicalRelationsTest, AreaFormulaHolds) {
 }
 
 TEST(RopeProblemTest, GapCalculationIsCorrect) {
-    double gap = calculateEarthGap();
+    double gap = calculateRopeGap();
     double expected = 1.0 / (2.0 * Circle::PI);
     EXPECT_NEAR(gap, expected, 1e-6);
 }
 
 TEST(RopeProblemTest, GapIsPositive) {
-    double gap = calculateEarthGap();
+    double gap = calculateRopeGap();
     EXPECT_GT(gap, 0.0);
 }
+
 TEST(PoolProblemTest, TotalExpenseIsPositive) {
-    double cost = calculatePoolCost();
+    double cost = computePoolExpenses();
     EXPECT_GT(cost, 0.0);
 }
+
 TEST(PoolProblemTest, ExpenseCalculationIsConsistent) {
-    double cost = calculatePoolCost();
+    double cost = computePoolExpenses();
     double poolRadius = 3.0;
     double outerRadius = 4.0;
     double pathArea = Circle::PI * (outerRadius * outerRadius -
                                     poolRadius * poolRadius);
     double fenceLength = 2 * Circle::PI * outerRadius;
     double expected = pathArea * 1000.0 + fenceLength * 2000.0;
-    EXPECT_NEAR(cost, expected, 1.0);  // Допуск 1 рубль
+    EXPECT_NEAR(cost, expected, 1.0);
 }
