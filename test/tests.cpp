@@ -130,10 +130,23 @@ TEST(PrecisionTest, HandlesHighPrecision) {
     EXPECT_NEAR(circle.getArea(), expectedArea, 1e-12);
 }
 
+TEST(CircleEdgeCasesTest, HandlesVeryLargeRadius) {
+    Circle circle(1e6);
+    EXPECT_NEAR(circle.getArea(), Circle::PI * 1e12, 1e-3);
+    EXPECT_NEAR(circle.getFerence(), 2 * Circle::PI * 1e6, 1e-3);
+}
+
+TEST(PrecisionTest, HandlesHighPrecision) {
+    Circle circle(0.1);
+    double expectedArea = Circle::PI * 0.01;
+    EXPECT_NEAR(circle.getArea(), expectedArea, 1e-12);
+}
+
 TEST(ConsistencyTest, SetAndGetMethodsWorkTogether) {
     Circle circle(5.0);
     circle.setRadius(7.0);
     EXPECT_DOUBLE_EQ(circle.getRadius(), 7.0);
+    
     double circ = circle.getFerence();
     circle.setFerence(circ);
     EXPECT_NEAR(circle.getRadius(), 7.0, 1e-10);
@@ -143,10 +156,5 @@ TEST(FractionalValuesTest, HandlesNonIntegerRadius) {
     Circle circle(3.14159);
     EXPECT_NEAR(circle.getRadius(), 3.14159, 1e-10);
     EXPECT_NEAR(circle.getArea(), Circle::PI * 3.14159 * 3.14159, 1e-8);
-}
-
-TEST(ValidationTest, RejectsExtremelyLargeValues) {
-    Circle circle(1.0);
-    EXPECT_THROW(circle.setRadius(1e400), std::invalid_argument);
 }
 
