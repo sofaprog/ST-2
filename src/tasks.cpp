@@ -18,7 +18,6 @@ double calculateRopeGap() {
 }
 
 double computePoolExpenses() {
-
     const double POOL_RADIUS = 3.0;
     const double PATH_WIDTH = 1.0;
     const double CONCRETE_PRICE = 1000.0;
