@@ -3,5 +3,4 @@
 #define INCLUDE_TASKS_H_
 double calculateRopeGap();
 double computePoolExpenses();
-
 #endif  // INCLUDE_TASKS_H_
