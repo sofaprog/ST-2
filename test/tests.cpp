@@ -146,7 +146,6 @@ TEST(ConsistencyTest, SetAndGetMethodsWorkTogether) {
     Circle circle(5.0);
     circle.setRadius(7.0);
     EXPECT_DOUBLE_EQ(circle.getRadius(), 7.0);
-    
     double circ = circle.getFerence();
     circle.setFerence(circ);
     EXPECT_NEAR(circle.getRadius(), 7.0, 1e-10);
